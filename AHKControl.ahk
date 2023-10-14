@@ -569,7 +569,7 @@ RebuildAndShowMenu(script_id_to_show=0, script_path_to_show="")
     local h_menu := MenuGetHandle("Root")
 
     ; Give E&xit an appropriate icon.
-    VarSetCapacity(mii,48,0), NumPut(48,mii), NumPut(0x80,mii,4), NumPut(8,mii,44)
+    VarSetCapacity(mii,16+8*A_PtrSize,0), NumPut(16+8*A_PtrSize,mii,"uint"), NumPut(0x80,mii,4,"uint"), NumPut(8,mii,16+7*A_PtrSize)
     DllCall("SetMenuItemInfo","uint",h_menu,"uint",i,"uint",1,"uint",&mii)
     
     Menu, Root, Show
