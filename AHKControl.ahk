@@ -557,7 +557,7 @@ RebuildAndShowMenu(script_id_to_show=0, script_path_to_show="")
     if (script_id_to_show || (script_path_to_show && Script_Count = 1))  ; Caller requested only this script's menu be shown.
     {
         if (Script_1_HasMenu)
-            MI_ShowMenu("Script_1")
+            Menu Script_1, Show
         else
             ShowScriptTrayMenu(Script_1)
         return
@@ -572,8 +572,6 @@ RebuildAndShowMenu(script_id_to_show=0, script_path_to_show="")
     VarSetCapacity(mii,48,0), NumPut(48,mii), NumPut(0x80,mii,4), NumPut(8,mii,44)
     DllCall("SetMenuItemInfo","uint",h_menu,"uint",i,"uint",1,"uint",&mii)
     
-    MI_SetMenuStyle(h_menu, 0x04000000) ; MNS_CHECKORBMP
-    ; MI_ShowMenu(h_menu)
     Menu, Root, Show
 }
 
